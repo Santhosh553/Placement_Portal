@@ -78,7 +78,7 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
                   <input class="form-control input-lg" type="text" id="stream" name="stream" placeholder="Stream">
                 </div>
                 <div class="form-group checkbox">
-                  <label><input type="checkbox"> I accept terms & conditions</label>
+                  <label><input type="checkbox" required> I accept terms & conditions</label>
                 </div>
                 <div class="form-group">
                   <button class="btn btn-flat btn-success">Register</button>

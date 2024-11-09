@@ -91,8 +91,8 @@ require_once("../db.php");
                                             ?>
                                                     <td><?php echo $row['subject']; ?></td>
                                                     <td><?php echo $row['notice']; ?></td>
-                                                    <?php if ($row['resume'] != '') { ?>
-                                                        <td><a href="../uploads/resume/<?php echo $row['resume']; ?>" download="<?php echo 'Notice'; ?>"><i class="fa fa-file"></i></a></td>
+                                                    <?php if ($row['notice'] != '') { ?>
+                                                        <td><a href="../uploads/notice/<?php echo $row['document']; ?>" download="<?php echo 'Notice'; ?>"><i class="fa fa-file"></i></a></td>
                                                     <?php } else { ?>
                                                         <td>No Resume Uploaded</td>
                                                     <?php } ?>

@@ -18,52 +18,109 @@ if (isset($_POST['submit'])) {
     $notice = $_POST['input'];
     $audience = $_POST['audience'];
 
+    $file = "";
+    $uploadOk = true;
 
-    //Folder where you want to save your resume. THIS FOLDER MUST BE CREATED BEFORE TRYING
-    $folder_dir = "../uploads/resume/";
+		//Folder where you want to save your resume. THIS FOLDER MUST BE CREATED BEFORE TRYING
+		$folder_dir = "../uploads/notice/";
 
-    //Getting Basename of file. So if your file location is Documents/New Folder/myResume.pdf then base name will return myResume.pdf
-    $base = basename($_FILES['resume']['name']);
+		//Getting Basename of file. So if your file location is Documents/New Folder/myResume.pdf then base name will return myResume.pdf
+		$base = basename($_FILES['notice']['name']);
 
-    //This will get us extension of your file. So myResume.pdf will return pdf. If it was resume.doc then this will return doc.
-    $resumeFileType = pathinfo($base, PATHINFO_EXTENSION);
+		//This will get us extension of your file. So myResume.pdf will return pdf. If it was resume.doc then this will return doc.
+		$docFileType = pathinfo($base, PATHINFO_EXTENSION);
 
-    //Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
-    $file = uniqid() . "." . $resumeFileType;
+		//Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
+		$file = uniqid() . "." . $docFileType;
 
-    //This is where your files will be saved so in this case it will be uploads/resume/newfilename
-    $filename = $folder_dir . $file;
+		//This is where your files will be saved so in this case it will be uploads/resume/newfilename
+		$filename = $folder_dir . $file;
 
-    //We check if file is saved to our temp location or not.
-    if (file_exists($_FILES['resume']['tmp_name'])) {
+		//We check if file is saved to our temp location or not.
+		if (file_exists($_FILES['notice']['tmp_name'])) {
 
+			//Next we need to check if file type is of our allowed extention or not. I have only allowed pdf. You can allow doc, jpg etc. 
+			if ($docFileType == "pdf") {
 
+				//Next we need to check file size with our limit size. I have set the limit size to 5MB. Note if you set higher than 2MB then you must change your php.ini configuration and change upload_max_filesize and restart your server
+				if ($_FILES['notice']['size'] < 500000) { // File size is less than 5MB
 
+					//If all above condition are met then copy file from server temp location to uploads folder.
+					move_uploaded_file($_FILES["notice"]["tmp_name"], $filename);
+				} else {
+					//Size Error
+					$_SESSION['uploadError'] = "Wrong Size. Max Size Allowed : 5MB";
+					$uploadOk = false;
+				}
+			} else {
+				//Format Error
+				$_SESSION['uploadError'] = "Wrong Format. Only PDF Allowed";
+				$uploadOk = false;
+			}
+		} else {
+			//File not copied to temp location error.
+			$_SESSION['uploadError'] = "Something Went Wrong. File Not Uploaded. Try Again.";
+			$uploadOk = false;
+		}
 
-        move_uploaded_file(
-            $_FILES["resume"]["tmp_name"],
-            $filename
-        );
-    }
-
-
-
-
-    $hash = md5(uniqid());
-
-
-
-
-
-
-    $sql = "INSERT INTO notice(subject,notice,audience,resume, hash,`date`) VALUES ('$subject','$notice','$audience','$file', '$hash',now())";
-
-    if ($conn->query($sql) === TRUE) {
-        include 'sendmail.php';
-        header("Location: postnotice.php");
-        exit();
-    }
+        if ($uploadOk) {
+            $hash = md5(uniqid());
+            $sql = "INSERT INTO notice(subject, notice, audience, document, hash, `date`) VALUES ('$subject', '$notice', '$audience', '$file', '$hash', now())";
+    
+            if ($conn->query($sql) === TRUE) {
+                include 'sendmail.php';
+                header("Location: postnotice.php");
+                exit();
+            } else {
+                echo "Error: " . $conn->error;
+            }
+        } 
 }
+		
+		
+    // // Check if a file is uploaded
+    // if (isset($_FILES['resume']['name']) && !empty($_FILES['resume']['name'])) {
+    // //Folder where you want to save your resume. THIS FOLDER MUST BE CREATED BEFORE TRYING
+    // $folder_dir = "../uploads/resume/";
+
+    // //Getting Basename of file. So if your file location is Documents/New Folder/myResume.pdf then base name will return myResume.pdf
+    // $base = basename($_FILES['resume']['name']);
+
+    // //This will get us extension of your file. So myResume.pdf will return pdf. If it was resume.doc then this will return doc.
+    // $resumeFileType = pathinfo($base, PATHINFO_EXTENSION);
+
+    // //Setting a random non repeatable file name. Uniqid will create a unique name based on current timestamp. We are using this because no two files can be of same name as it will overwrite.
+    // $file = uniqid() . "." . $resumeFileType;
+
+    // //This is where your files will be saved so in this case it will be uploads/resume/newfilename
+    // $filename = $folder_dir . $file;
+
+    // //We check if file is saved to our temp location or not.
+    // if (file_exists($_FILES['resume']['tmp_name'])) {
+    //     move_uploaded_file(
+    //         $_FILES["resume"]["tmp_name"],
+    //         $filename
+    //     );
+    // }else
+    //     // File failed to move
+    //     echo "Error: Failed to upload the file.";
+    // }
+    // else 
+    // echo "Error: Temporary file not found.";
+
+//     $hash = md5(uniqid());
+
+
+//     $sql = "INSERT INTO notice(subject,notice,audience,resume, hash,`date`) VALUES ('$subject','$notice','$audience','$file', '$hash',now())";
+
+//     if ($conn->query($sql) === TRUE) {
+//         include 'sendmail.php';
+//         header("Location: postnotice.php");
+//         exit();
+//     }
+// }
+
+
 
 ?>
 
@@ -111,7 +168,7 @@ if (isset($_POST['submit'])) {
                     New Notice Successfully added
                 </div>
 
-                <form class="centre " action="" method="POST">
+                <form class="centre " action="" method="POST" enctype="multipart/form-data">
                     <div>
                         <h4><strong> Post a new notice</strong></h4>
                     </div>
@@ -129,7 +186,7 @@ if (isset($_POST['submit'])) {
                             }
                         </style>
                         <!-- <label style="color: red;">Attachment</label> -->
-                        <input type="file" name="resume" class="btn btn-flat btn-primary">
+                        <input type="file" name="notice" class="btn btn-flat btn-primary">
                     </div>
 
                     <br>
@@ -207,10 +264,10 @@ if (isset($_POST['submit'])) {
                                     <td><?php echo $row['subject']; ?></td>
                                     <td><?php echo $row['notice']; ?></td>
                                     <td><?php echo $row['audience']; ?></td>
-                                    <?php if ($row['resume'] != '') { ?>
-                                        <td><a href="../uploads/resume/<?php echo $row['resume']; ?>" download="<?php echo 'Notice'; ?>"><i class="fa fa-file"></i></a></td>
+                                    <?php if ($row['notice'] != '') { ?>
+                                        <td><a href="../uploads/notice/<?php echo $row['document']; ?>" download="<?php echo 'Notice'; ?>"><i class="fa fa-file"></i></a></td>
                                     <?php } else { ?>
-                                        <td>No Resume Uploaded</td>
+                                        <td>No Document Uploaded</td>
                                     <?php } ?>
                                     <td><?php echo $row['date']; ?></td>
 
