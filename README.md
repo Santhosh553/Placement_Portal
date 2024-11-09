@@ -1,7 +1,7 @@
 # VEC Placement Portal
 
 
-### [Problem Statement]()- Many time student have visited many websites / blogs for find where is Job opening is there or not, Many cases they miss the opportunity. In this modern world bombard with information make students confused, one mentor in form of senior can definitely help how to web dev, Android dev ,AWS and many more questions 
+### Problem Statement - Many time student have visited many websites / blogs for find where is Job opening is there or not, Many cases they miss the opportunity. In this modern world bombard with information make students confused, one mentor in form of senior can definitely help how to web dev, Android dev ,AWS and many more questions 
 
 
 
@@ -55,34 +55,5 @@ GETTING STARTED
 8. Browse the file in directory [placement-portal/database/db1.sql].
 
 9. Open any browser and type http://localhost/placement-portal.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-### Team Member
-
-- [Atinder Kumar](https://github.com/atinder11)
-
-- [Suyash Rawat](https://github.com/SuyashRawat)
-
-- [Jatin Tagore](https://github.com/jazz1706)
 
 
