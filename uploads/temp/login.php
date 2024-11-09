@@ -134,7 +134,7 @@ if (isset($_SESSION['id_user']) || isset($_SESSION['id_company'])) {
 
     <footer class="main-footer" style="margin-left: 0px;">
       <div class="text-center">
-        <strong>Copyright &copy; 2025 <a href="learningfromscratch.online">Placement Portal</a>.</strong> All rights
+        <strong>Copyright &copy; 2025 Placement Portal.</strong> All rights
         reserved.
       </div>
     </footer>
