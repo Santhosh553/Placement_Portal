@@ -33,7 +33,7 @@ require_once("db.php");
 
     <section id="hero-animated" class="hero-animated d-flex align-items-center">
     <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-            <img src="assets/img/hero-carousel/hero-carousel-3.svg" class="img-fluid animated">
+            <!-- <img src="assets/img/hero-carousel/hero-carousel-4.svg" class="img-fluid animated"> -->
             <h2>Welcome to <span>VEC Placement Cell</span></h2>
             <p>For Your Entire Placement Journey.</p>
             <div class="d-flex">
@@ -81,7 +81,7 @@ require_once("db.php");
                 <h4><a href="" class="stretched-link">Apply for Drives</a></h4>
                 <p>Look for eligibilty criteria and apply for companies accordingly.</p>
             </div>
-        </div><!-- End Service Item -->
+        </div> End Service Item -->
 
         </div>
 
@@ -111,7 +111,7 @@ require_once("db.php");
 
                     <div class="col-lg-4 col-md-6 order-first order-md-last d-flex align-items-center">
                         <div class="img">
-                            <img src="assets/img/feature-7.jpg" alt="" class="img-fluid">
+                            <img src="assets/img/hero-carousel/hero-carousel-4.svg" alt="" class="img-fluid animated">
                         </div>
                     </div>
 
