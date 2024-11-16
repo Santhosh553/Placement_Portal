@@ -66,7 +66,7 @@
         </div>
 
         <div class="map">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d17786.14796216234!2d77.36912155731619!3d28.62549268679601!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce551491b3ce7%3A0x7335d9fcfd4d9db0!2sJAYPEE%20INSTITUTE%20OF%20INFORMATION%20TECHNOLOGY!5e0!3m2!1sen!2sin!4v1673264938777!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d124325.90539857533!2d80.10915994683197!3d13.15075657230726!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3a5264a10c856599%3A0xac3348f41097ba7f!2sAmbattur%20Red%20Hills%20Rd%2C%20Velammal%20Nagar%2C%20Surapet%2C%20Chennai%2C%20Tamil%20Nadu%20600066!3m2!1d13.1507697!2d80.1915618!5e0!3m2!1sen!2sin!4v1731758940918!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div><!-- End Google Maps -->
 
         <div class="container">
@@ -77,13 +77,13 @@
 
                     <div class="info">
                         <h3>Get in touch</h3>
-                        <p>PlACEMENT CELL</p>
+                        <p>PLACEMENT CELL</p>
 
                         <div class="info-item d-flex">
                             <i class="bi bi-geo-alt flex-shrink-0"></i>
                             <div>
                                 <h4>Location:</h4>
-                                <p>Jaypee Institute of Information Technology, A 10, A Block, Block A, Industrial Area, Sector 62, Noida, Uttar Pradesh 201309.</p>
+                                <p>Velammal Engineering College, <br>Ambattur Red-hills Road, Surapet, <br>Chennai – 600 066. <br>Tamil Nadu, India.</p>
                             </div>
                         </div><!-- End Info Item -->
 
@@ -91,7 +91,7 @@
                             <i class="bi bi-envelope flex-shrink-0"></i>
                             <div>
                                 <h4>Email:</h4>
-                                <p>codestomp@gmail.com</p>
+                                <p>placement@velammal.in</p>
                             </div>
                         </div><!-- End Info Item -->
 
@@ -99,7 +99,7 @@
                             <i class="bi bi-phone flex-shrink-0"></i>
                             <div>
                                 <h4>Call:</h4>
-                                <p>9821023521</p>
+                                <p>9876543210</p>
                             </div>
                         </div><!-- End Info Item -->
 
