@@ -108,7 +108,7 @@
                 </div>
 
                 <div class="col-lg-8">
-                    <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                <form action="forms/contact_message.php" method="post" role="form" class="php-email-form">
                         <div class="row">
                             <div class="col-md-6 form-group">
                                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -137,6 +137,35 @@
         </div>
     </section><!-- End Contact Section -->
 
+    <script>
+    document.querySelector('.php-email-form').addEventListener('submit', function (e) {
+        e.preventDefault(); // Prevent the form from submitting normally
+
+        var form = this;
+        var action = form.getAttribute('action');
+
+        // Show the loading message
+        form.querySelector('.loading').style.display = 'block';
+
+        var formData = new FormData(form);
+
+        fetch(action, {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Hide the loading message and show the success message
+            form.querySelector('.loading').style.display = 'none';
+            form.querySelector('.sent-message').style.display = 'block';
+        })
+        .catch(error => {
+            // Show the error message if the form submission fails
+            form.querySelector('.loading').style.display = 'none';
+            form.querySelector('.error-message').style.display = 'block';
+        });
+    });
+</script>
 
 
     <!-- footer starts -->
